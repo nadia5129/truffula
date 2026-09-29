@@ -4,6 +4,15 @@ As part of Wave 0, please fill out notes for each of the below files. They are i
 PLEASE MAKE FREQUENT COMMITS AS YOU FILL OUT THIS FILE.
 
 ## App.java
+- Application for printing directory tree
+- Show hidden files
+- Use color output
+- Root directory to begin printing tree
+- hidden files are identified by names that start with a .
+- color output is enabled by default, disable by using flags. Flags are __ ?
+ -h show hidden files
+ -nc do not use color
+ 
 
 ## ConsoleColor.java
 
