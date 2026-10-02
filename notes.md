@@ -15,6 +15,23 @@ PLEASE MAKE FREQUENT COMMITS AS YOU FILL OUT THIS FILE.
  
 
 ## ConsoleColor.java
+- Using enum instead of class 
+- Only colors allowed to choose:
+BLACK
+RED
+GREEN
+YELLOW
+BLUE
+PURPLE
+CYAN
+WHITE
+RESET
+-NSI escape code. A terminal recognizes it as an instruction rather than ordinary text.
+-getCode() returns the code 
+-toString returns the code so the colors can be used directly
+-Reset, changes the terminal color back to default
+
+
 
 ## ColorPrinter.java / ColorPrinterTest.java
 
