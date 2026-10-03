@@ -44,6 +44,12 @@ RESET
 
 
 ## TruffulaOptions.java / TruffulaOptionsTest.java
+- class stores settings for how the directory tree should be displayed.
+- stores root directory as a file
+- -h turns on hiddens files 
+- -nc turns off colors
+- getters allow other classes to accesss these settings 
+- unfinished contrucotr will parse command line arguemnts and check the path exists and is a directory
 
 ## TruffulaPrinter.java / TruffulaPrinterTest.java
 
