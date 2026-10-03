@@ -62,3 +62,6 @@ RESET
 - need to recurse through the root directory and print files & folders
 
 ## AlphabeticalFileSorter.java
+- Take an array of files/folders and put them in alphabetical order by their names
+- sort() method is static , can be called wihtout creating an alphabeticalFilerSorter object
+- uses Arrays.sort() and lambda to compare file names
