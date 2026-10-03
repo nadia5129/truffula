@@ -49,7 +49,6 @@ class ColorPrinterTest {
     //arange
     ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     PrintStream printStream = new PrintStream(outputStream);
-
     ColorPrinter printer = new ColorPrinter(printStream);
   
     //act 
