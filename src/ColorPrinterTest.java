@@ -35,6 +35,17 @@ class ColorPrinterTest {
     ColorPrinter printer = new ColorPrinter(printStream);
     printer.setCurrentColor(ConsoleColor.BLUE);
 
+    //act
+    String message = "hello";
+    printer.print(message, false);
+
+    //assert
+    String expectedOutput = ConsoleColor.BLUE + "hello";
+    assertEquals(expectedOutput, outputStream.toString());
+
+
+
+
 
   }
 }
