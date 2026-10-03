@@ -149,4 +149,37 @@ public class TruffulaPrinterTest {
         // Assert that the output matches the expected output exactly
         assertEquals(expected.toString(), output);
     }
+
+    //test for wave 4
+    @Test
+public void testPrintTreeSimple(@TempDir File tempDir) throws IOException {
+    File myFolder = new File(tempDir, "myFolder");
+    myFolder.mkdir();
+
+    File hello = new File(myFolder, "hey.txt");
+    hello.createNewFile();
+
+    File documents = new File(myFolder, "Documents");
+    documents.mkdir();
+
+    File notes = new File(documents, "note.txt");
+    notes.createNewFile();
+
+    //turn color off 
+    TruffulaOptions options =
+        new TruffulaOptions(myFolder, false, false);
+
+    //what the printer prints
+    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    PrintStream printStream = new PrintStream(baos);
+    TruffulaPrinter printer =
+        new TruffulaPrinter(options, printStream);
+    printer.printTree();
+
+    String output = baos.toString();
+    assertTrue(output.contains("myFolder/"));
+    assertTrue(output.contains("   hey.txt"));
+    assertTrue(output.contains("   Documents/"));
+    assertTrue(output.contains("      note.txt"));
+}
 }
