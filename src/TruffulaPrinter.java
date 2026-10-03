@@ -106,14 +106,34 @@ public class TruffulaPrinter {
   public void printTree() {
     // TODO: Implement this!
     // REQUIRED: ONLY use java.io, DO NOT use java.nio
+      File root = options.getRoot();
+      out.println(root.getName() + "/");
+      printDirectory(root,1);
+    }
     
     // Hints:
     // - Add a recursive helper method
+       //recursive helper method
+    private void printDirectory(File directory, int level) {
+    File[] files = directory.listFiles();
+
+    if (files == null) {
+        return;
+    }
+
+    for (File file : files) {
+    String indent = "   ".repeat(level);
+    if (file.isDirectory()) {
+        out.println(indent + file.getName() + "/");
+        printDirectory(file, level + 1);
+    } else {
+        out.println(indent + file.getName());
+    }
+    }
+  }
     // - For Wave 6: Use AlphabeticalFileSorter
     // DO NOT USE SYSTEM.OUT.PRINTLN
     // USE out.println instead (will use your ColorPrinter)
 
-    out.println("printTree was called!");
-    out.println("My options are: " + options);
   }
-}
+
