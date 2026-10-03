@@ -34,6 +34,14 @@ RESET
 
 
 ## ColorPrinter.java / ColorPrinterTest.java
+- This class is responsible for printing colored text
+-stores currentColor using ConsoleColor enum and a PrintStream that determines where the output is printed
+- setCurrentColor() changes the color 
+- getCurrentColor returns it
+- reset determines whethere the console color should reset after printing
+- the constructor allows the printer to start with either default white color or a specifed color
+- need to implement print(String message, boolean rest)
+
 
 ## TruffulaOptions.java / TruffulaOptionsTest.java
 
