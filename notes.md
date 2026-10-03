@@ -52,5 +52,13 @@ RESET
 - unfinished contrucotr will parse command line arguemnts and check the path exists and is a directory
 
 ## TruffulaPrinter.java / TruffulaPrinterTest.java
+- printing a directory tree struture
+- recevies a TruffulaOptions  object 
+- colorPrinter for output
+- many construcotrs 
+- contructor overloading
+- all constructor call the main constructor
+- printTree() isnt implemented 
+- need to recurse through the root directory and print files & folders
 
 ## AlphabeticalFileSorter.java
