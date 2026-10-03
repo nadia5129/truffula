@@ -87,6 +87,7 @@ public class ColorPrinter {
    */
   public void print(String message, boolean reset) {
     // TODO: Implement this!
+    printStream.print(currentColor);
   }
 
   /**
@@ -109,4 +110,5 @@ public class ColorPrinter {
     this.printStream = printStream;
     this.currentColor = color;
   }
+ 
 }
