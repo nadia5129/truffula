@@ -182,4 +182,31 @@ public void testPrintTreeSimple(@TempDir File tempDir) throws IOException {
     assertTrue(output.contains("   Documents/"));
     assertTrue(output.contains("      note.txt"));
 }
+
+    // test for wave 5
+@Test
+public void testHiddenFileNotShown(@TempDir File tempDir) throws IOException {
+    File myFolder = new File(tempDir, "myFolder");
+    myFolder.mkdir();
+
+    File visibleFile = new File(myFolder, "visible.txt");
+    visibleFile.createNewFile();
+
+    createHiddenFile(myFolder, ".hidden.txt");
+
+    TruffulaOptions options =
+        new TruffulaOptions(myFolder, false, false);
+
+    ByteArrayOutputStream baoStream = new ByteArrayOutputStream();
+    PrintStream printStream = new PrintStream(baoStream);
+
+    TruffulaPrinter printer =
+        new TruffulaPrinter(options, printStream);
+
+    printer.printTree();
+    String output = baoStream.toString();
+    assertTrue(output.contains("visible.txt"));
+    assertTrue(!output.contains(".hidden.txt"));
+}
+
 }

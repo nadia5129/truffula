@@ -122,6 +122,9 @@ public class TruffulaPrinter {
     }
 
     for (File file : files) {
+    if (file.isHidden() && !options.isShowHidden()) {
+    continue;
+}
     String indent = "   ".repeat(level);
     if (file.isDirectory()) {
         out.println(indent + file.getName() + "/");
