@@ -122,6 +122,8 @@ public class TruffulaPrinter {
         return;
     }
 
+    files = AlphabeticalFileSorter.sort(files);
+
     for (File file : files) {
     if (file.isHidden() && !options.isShowHidden()) {
     continue;
@@ -133,7 +135,7 @@ public class TruffulaPrinter {
     } else {
         out.setCurrentColor(ConsoleColor.WHITE);
     }
-    
+
     String indent = "   ".repeat(level);
     if (file.isDirectory()) {
         out.println(indent + file.getName() + "/");
