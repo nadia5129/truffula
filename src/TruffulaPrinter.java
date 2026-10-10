@@ -104,9 +104,10 @@ public class TruffulaPrinter {
    *    zebra.txt
    */
   public void printTree() {
-    // TODO: Implement this!
     // REQUIRED: ONLY use java.io, DO NOT use java.nio
       File root = options.getRoot();
+      //wave 6 changed the root color to white
+      out.setCurrentColor(ConsoleColor.WHITE);
       out.println(root.getName() + "/");
       printDirectory(root,1);
     }
@@ -124,7 +125,15 @@ public class TruffulaPrinter {
     for (File file : files) {
     if (file.isHidden() && !options.isShowHidden()) {
     continue;
-}
+    }
+
+    if (options.isUseColor()) { out.setCurrentColor(
+        colorSequence.get(level % colorSequence.size())
+    );
+    } else {
+        out.setCurrentColor(ConsoleColor.WHITE);
+    }
+    
     String indent = "   ".repeat(level);
     if (file.isDirectory()) {
         out.println(indent + file.getName() + "/");

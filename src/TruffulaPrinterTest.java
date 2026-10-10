@@ -152,7 +152,7 @@ public class TruffulaPrinterTest {
 
     //test for wave 4
     @Test
-public void testPrintTreeSimple(@TempDir File tempDir) throws IOException {
+    public void testPrintTreeSimple(@TempDir File tempDir) throws IOException {
     File myFolder = new File(tempDir, "myFolder");
     myFolder.mkdir();
 
@@ -181,11 +181,11 @@ public void testPrintTreeSimple(@TempDir File tempDir) throws IOException {
     assertTrue(output.contains("   hey.txt"));
     assertTrue(output.contains("   Documents/"));
     assertTrue(output.contains("      note.txt"));
-}
+    }
 
     // test for wave 5
-@Test
-public void testHiddenFileNotShown(@TempDir File tempDir) throws IOException {
+    @Test
+    public void testHiddenFileNotShown(@TempDir File tempDir) throws IOException {
     File myFolder = new File(tempDir, "myFolder");
     myFolder.mkdir();
 
@@ -207,6 +207,45 @@ public void testHiddenFileNotShown(@TempDir File tempDir) throws IOException {
     String output = baoStream.toString();
     assertTrue(output.contains("visible.txt"));
     assertTrue(!output.contains(".hidden.txt"));
+}
+
+    // Test for Wave 6
+    @Test
+    public void testPrintTreeColors(@TempDir File tempDir) throws IOException {
+    File myFolder = new File(tempDir, "myFolder");
+    myFolder.mkdir();
+
+    File documents = new File(myFolder, "Documents");
+    documents.mkdir();
+
+    File images = new File(documents, "images");
+    images.mkdir();
+
+    File cat = new File(images, "cat.png");
+    cat.createNewFile();
+
+    TruffulaOptions options =
+        new TruffulaOptions(myFolder, false, true);
+
+    
+    ByteArrayOutputStream baoStream = new ByteArrayOutputStream();
+    PrintStream printStream = new PrintStream(baoStream);
+
+    TruffulaPrinter printer =
+        new TruffulaPrinter(options, printStream);
+
+    printer.printTree();
+
+    String output = baoStream.toString();
+    String nl = System.lineSeparator();
+
+    String expected =
+        ConsoleColor.WHITE + "myFolder/" + nl + ConsoleColor.RESET +
+        ConsoleColor.PURPLE + "   Documents/" + nl + ConsoleColor.RESET +
+        ConsoleColor.YELLOW + "      images/" + nl + ConsoleColor.RESET +
+        ConsoleColor.WHITE + "         cat.png" + nl + ConsoleColor.RESET;
+
+    assertEquals(expected, output);
 }
 
 }
